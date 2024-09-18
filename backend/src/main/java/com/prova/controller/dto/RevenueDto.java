@@ -10,16 +10,15 @@ import java.util.List;
 
 public record RevenueDto(
 
-        @NotBlank
+        @NotBlank(message = "nome não pode ser vazio")
         String name,
 
-        @NotNull
+        @NotNull(message = "tempo de preparação não pode ser nulo")
         LocalTime preparationTime,
 
-        @NotNull
+        @NotNull(message = "Custo aproximado nõa pode ser nulo")
         Float approximateCost,
 
-        @NotBlank
         List<IngredientDto> ingredients
 ) {
 }

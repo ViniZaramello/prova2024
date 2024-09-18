@@ -1,15 +1,27 @@
 package com.prova.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
+@Data
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity(name = "ingredient")
 public class IngredientModel {
-    Long id;
-    String name;
-    Long idRevenue;
-    Float approximateCost;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "id_revenue")
+    private RevenueModel revenue;
+
+    @Column
+    private Float approximateCost;
+
 }

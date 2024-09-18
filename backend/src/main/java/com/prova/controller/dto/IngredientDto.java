@@ -6,15 +6,12 @@ import lombok.Builder;
 
 //@TODO adicionar mensagem de erro
 @Builder
-record IngredientDto(
+public record IngredientDto(
 
         @NotBlank
         String name,
 
         @NotNull
-        Long idRevenue,
-
-        @NotNull
-        Float approximateCost
+        Long idRevenue
 ) {
 }

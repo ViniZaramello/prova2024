@@ -1,18 +1,32 @@
 package com.prova.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
+@Data
+@Getter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Entity(name = "revenue")
 public class RevenueModel {
-    Long id;
-    String name;
-    IngredientModel ingredients;
-    LocalTime preparationTime;
-    Float approximateCost;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
+    private String name;
+
+    @Column
+    private LocalTime preparationTime;
+
+    @OneToMany(mappedBy = "revenue")
+    private List<IngredientModel> ingredients;
+
+    @Column
+    private Float approximateCost;
 }
